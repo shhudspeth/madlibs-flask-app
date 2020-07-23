@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+  <title>A Short and Brief History of One Day at Hackbright</title>
+</head>
+<h1>Hackbright Goes Mad...</h1>
+<body>
+    
+    
+    Hi {{ choices_dict.name }}! I think you're {{ choices_dict.adverb }} 
+    {{ choices_dict.adj }}!<br>
+    Did you know that {{choices_dict.person}} thinks that a(n)
+   {{choices_dict.color}} {{choices_dict.noun}}
+   is a fantastic gift. They love {{choices_dict.plural_nouns[1]}} as they are so
+    {{ choices_dict.adverb }} amazing, too, but not so much 
+     {{ choices_dict.plural_nouns[0]}}. <br>
+     Play again?
+     <a href="/game?person={{choices_dict.name}}&yes=yes"> Choose new madlibs</a>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <title>A Compliment</title>
+</head>
+<body>
+    Hi {{ name }}! I think you're {{ compliment }}!<br>
+    <form action="/madlibs">
+   
+    Please enter or select from the following options: <br>
+    <fieldset>
+      <label for="person"> PLEASE TYPE IN A PERSON</label>
+      <input type="text" name="person" value="Balloonicorn">
+    </fieldset>
+    <fieldset>
+      <label for="color"> PLEASE CHOOSE A COLOR</label>
+      <select name="color" value="tomato">
+          <option value="lavender">lavender</option>
+          <option value="indigo">indigo</option>
+          <option value="salmon">salmon</option>
+          <option value="aqua">aqua</option>
+          <option value="rose">rose</option>
+          <option value="orange">orange</option>
+          <option value="charteuse">charteuse</option>
+          <option value="k">khaki</option>
+          <option value="s">sapphire</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <label for="noun">PLEASE ENTER A NOUN</label>
+        <input type="text" name="noun" value="umbrella">
+    </fieldset>
+    <fieldset>
+        <label for="adj">PLEASE ENTER AN ADJECTIVE</label>
+        <input type="text" name="adj" value="shiny">
+    </fieldset>
+    <fieldset>
+        <label for="adj">PLEASE CHOOSE TWO PLURAL NOUNS</label><br>
+        <input type="checkbox" name="plural_nouns1" value ="galoshes">Galoshes<br>
+        <input type="checkbox" name="plural_nouns2" value ="raisins">Raisins<br>
+        <input type="checkbox" name="plural_nouns3" value ="Mariah Carey's Best Hits">Mariah Carey's Best Hits<br>
+        <input type="checkbox" name="plural_nouns4" value ="abaci">Abaci<br>
+        <input type="checkbox" name="plural_nouns5" value ="dragon ashes">Dragon Ashes<br>
+    </fieldset>
+    <fieldset>
+        <label for="adj">PLEASE CHOOSE AN ADVERB</label><br>
+        <input type="radio" name="adverb" value="swiftly">Swiftly<br>
+        <input type="radio" name="adverb" value="supernaturally">Supernaturally<br>
+        <input type="radio" name="adverb" value="strangely">Strangely<br>
+        <input type="radio" name="adverb" value="superficially">Superficially<br>
+
+    </fieldset>
+        <input type="hidden" name="name" value={{name}}>
+
+          
+      <input type="submit">
+    </form>
+</body>
+</html>
