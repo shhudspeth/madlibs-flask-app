@@ -1,20 +1,77 @@
-<!doctype html>
-<html>
-<head>
-  <title>A Short and Brief History of One Day at Hackbright</title>
-</head>
+{% extends "layout.html" %}
+
+{% block title%} A Short and Brief History of One Day at Hackbright {% endblock%}
+
+{% block content%}
+
 <h1>Hackbright Goes Mad...</h1>
 <body>
+    {% if story == "gifts" %}
+        <div class = "paragraph1">
+            Hi {{ choices_dict.name }}! I think you're {{ choices_dict.adverb }} 
+            {{ choices_dict.adj }}!
+        </div>
+
+        <div class="paragraph2">
+            Did you know that {{choices_dict.person}} thinks that a(n)
+            {{choices_dict.color}} {{choices_dict.noun}} is a fantastic gift.
+            They love {{choices_dict.plural_nouns[1]}} as they are so
+            {{ choices_dict.adverb }} amazing, but not so much 
+            {{ choices_dict.plural_nouns[0]}}. 
+        </div>
+        Play again?<br>
+        <a href="/game?person={{choices_dict.name}}&yes=yes"> Choose new madlibs</a>
+    {% endif %}
     
-    
-    Hi {{ choices_dict.name }}! I think you're {{ choices_dict.adverb }} 
-    {{ choices_dict.adj }}!<br>
-    Did you know that {{choices_dict.person}} thinks that a(n)
-   {{choices_dict.color}} {{choices_dict.noun}}
-   is a fantastic gift. They love {{choices_dict.plural_nouns[1]}} as they are so
-    {{ choices_dict.adverb }} amazing, too, but not so much 
-     {{ choices_dict.plural_nouns[0]}}. <br>
-     Play again?
-     <a href="/game?person={{choices_dict.name}}&yes=yes"> Choose new madlibs</a>
+    {% if story == "rainbows" %}
+
+        <div class = "paragraph1">
+            OMG. {{ choices_dict.name }}! The {{ choices_dict.adverb }} 
+            {{ choices_dict.adj }} leprechaun just left a pot of gold in 
+                {% if choices_dict.locations|length >= 3%}
+
+                    {{choices_dict.locations[0]}}, {{choices_dict.locations[1]}}, or {{choices_dict.locations[2]}}!
+                {% endif %}
+
+                {% if choices_dict.locations|length == 2 %}
+                    {{choices_dict.locations[0]}} or {{choices_dict.locations[1]}}!
+                {% endif %}
+
+                {% if choices_dict.locations|length == 1 %}
+                    {{choices_dict.locations[0]}}!
+                {% endif %}
+            
+                {% for location in choices_dict.locations %}
+                    {{ location }}
+                {% endfor %}
+            He said that he captured {{choices_dict.person}} and until we bring him
+            a(n) {{choices_dict.color}} {{choices_dict.noun}} he'll turn each of 
+            their toes into chocolate.
+            Let's grab {{choices_dict.plural_nouns[1]}} and stuff our pockets with
+            {{choices_dict.plural_nouns[0]}}. It's  {{ choices_dict.adj }} rescue rainbow time. 
+        </div> 
+
+        Play again?<br>
+        <a href="/game?person={{choices_dict.name}}&yes=yes"> Choose new madlibs</a>
+
+    {% endif %}
+
+    {% if story == "warriornuns" %}
+        <div class="paragraph1">
+            {{ choices_dict.name }}! I know this may seem {{ choices_dict.adverb }} 
+            {{ choices_dict.adj }} but the warrior nun {{choices_dict.person}} 
+            has seen a demon 
+            in one of our cohort and needs our help. We will need
+            a(n) {{choices_dict.color}} {{choices_dict.noun}} and {{choices_dict.plural_nouns[1]}}. 
+            Have faith, warrior nuns and 
+            {{choices_dict.plural_nouns[0]}} are going to save us all.
+        </div>
+        Play again? <br>
+        <a href="/game?person={{choices_dict.name}}&yes=yes"> Choose new madlibs</a>
+
+    {% endif %}
+
+
 </body>
-</html>
+
+{% endblock %}

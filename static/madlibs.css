@@ -1,0 +1,40 @@
+ 
+ div {
+    font-family: arial;
+    color: darkslateblue;
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 10px;
+    align-self: center;
+   
+    
+
+} 
+
+.greeting 
+{
+    font-family: arial;
+    color: royalblue;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 10px;
+   
+    
+
+} 
+
+body {
+    margin: 20px;
+    font-size: xx-large;
+    font-weight: bold;
+    color:blueviolet;
+    margin-bottom: 10px;
+    width: 500px;
+    
+}
+
+fieldset {
+    max-width: 500px;
+    border: 3px solid #2f4e03;
+    padding: 10px;
+    }

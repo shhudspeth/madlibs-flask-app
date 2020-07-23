@@ -1,6 +1,6 @@
 """A madlib game that compliments its users."""
 
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
 
@@ -19,7 +19,7 @@ AWESOMENESS = [
 def start_here():
     """Display homepage."""
 
-    return "Hi! This is the home page."
+    return render_template("hello.html")
 
 
 @app.route('/hello')
@@ -35,40 +35,40 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
+    compliments = sample(AWESOMENESS, 3)
 
     return render_template("compliment.html",
                            person=player,
-                           compliment=compliment)
+                           compliments=compliments)
 
 @app.route('/game')
 def show_madlib_form():
     play_game = request.args.get("yes")
     name = request.args.get('person')
-    compliment = request.args.get('compliment')
+    compliment = sample(AWESOMENESS, 1)
+    print(compliment)
 
     if play_game == "yes":
-        return render_template("game.html", name=name, compliment=compliment)
+        return render_template("game.html", name=name, compliment=compliment[0])
     else:
         return render_template("goodbye.html", name=name)
 
 @app.route("/madlibs")
 def show_madlib():
-    check_boxes = []
-    for key in request.args:
-         if str(key).startswith("plural_noun"):
-             check_boxes.append(request.args[key])
-   
+    which_story_to_tell = ["gifts", "rainbows", "warriornuns"]
+
+    
     madlib_choices = {}
     madlib_choices['name'] = request.args.get("name")
     madlib_choices['noun'] = request.args.get('noun')
     madlib_choices['person'] = request.args.get('person')
     madlib_choices['color'] = request.args.get('color')
     madlib_choices['adj'] = request.args.get("adj")
-    madlib_choices['plural_nouns'] = check_boxes
+    madlib_choices['plural_nouns'] = request.args.getlist('plural_nouns')
+    madlib_choices['locations'] = request.args.getlist('locations')
     madlib_choices['adverb'] = request.args.get('adverb')
    
-    return render_template("madlibs.html",choices_dict=madlib_choices)
+    return render_template("madlibs.html",choices_dict=madlib_choices,story=choice(which_story_to_tell) )
 
 
 

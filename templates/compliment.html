@@ -1,19 +1,29 @@
-<!doctype html>
-<html>
-<head>
-  <title>A Compliment</title>
-</head>
-<body>
-    Hi {{ person }}! I think you're {{ compliment }}!<br>
+
+{% extends "layout.html" %}
+
+{% block title%}A Compliment{% endblock%}
+
+{% block content%}
+  
+  <div class = "greeting">
+    Hi {{ person }}! I think you're:
+    {% for compliment in compliments %}
+        <ul>{{ compliment }}</ul>
+    {% endfor %}
+  </div>
+  
+  <div class = "form_questions">
     <form action="/game">
-    Would you like to play a game?
-      <input type="hidden" name = "person" value = {{person}}>
-      <input type="hidden" name = "compliment" value = {{compliment}}>
-      <label for="yes"> Yes</label>
-      <input type="radio" name="yes" value="yes">
-      <label for="no"> No</label>
-      <input type="radio" name="yes" value="no">
-      <input type="submit">
+      Would you like to play a game?
+        <input type="hidden" name = "person" value = {{person}}>
+        <input type="hidden" name = "compliment" value = {{compliments}}>
+        <label for="yes"> Yes</label>
+        <input type="radio" name="yes" value="yes">
+        <label for="no"> No</label>
+        <input type="radio" name="yes" value="no"> <br>
+        <br>
+        <input type="submit">
     </form>
-</body>
-</html>
+  </div>
+  
+{% endblock %}
